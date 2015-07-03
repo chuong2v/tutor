@@ -1,11 +1,23 @@
 Rails.application.routes.draw do
-  get 'tutors/index'
+  # get 'users/index'
 
+  resources :tutor_details
+  resources :class_details
+  resources :levels
+  resources :tutor_classes
+  resources :subjects
+  devise_for :users, controllers: {
+    # sessions: 'users/sessions'
+    registrations: 'users/registrations',
+    sessions: 'users/sessions'
+  }
+  # devise_for :users
+  resources :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'tutors#index'
+  root 'levels#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
