@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Tutor</title>
+  <title>Tutors</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body onload="resizediv()">
+  <header id="header">
+    <%= render 'layouts/header' %>
+  </header>
 
-<%= yield %>
+  <main id="body" >
+    <div class="right">
+    <%= yield %>
+  </div>
+  </main>
 
+  <footer>
+     <%= render 'layouts/footer' %>
+  </footer>
 </body>
 </html>
