@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
   before_filter :configure_permitted_parameters, if: :devise_controller?
   protect_from_forgery with: :exception
   # before_action :authenticate_user!
-
   protected
   def set_current_user
     User.current = current_user
