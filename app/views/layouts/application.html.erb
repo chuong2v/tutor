@@ -11,14 +11,40 @@
     <%= render 'layouts/header' %>
   </header>
 
-  <main id="body" >
-    <div class="right">
-    <%= yield %>
-  </div>
-  </main>
+  <div class="container-fluid">           
+    <div class="row" style="border: #3b5998 solid 5px;">
+      <div class="col-sm-12">
+        <%= form_tag(tutor_details_search_path, method: "get") do %>   
+          <%= label_tag :subject_id %>
+          <%= select_tag :subject_id, options_for_select(Subject.all.collect {|subject| [subject.name, subject.id]}), include_blank: "All"%>
+          <%= label_tag :level_id %>
+          <%= select_tag :level_id,  options_for_select(Level.all.collect {|level| [level.name, level.id]}), include_blank: "All" %>
+          <%= text_field_tag(:q) %>
+          <%= select_tag :kind, options_for_select(["Class", "Tutor"])%>
+          <%= submit_tag "Search", class: "search_button"  %> 
+        <% end %>
+      </div>
+    </div>
 
-  <footer>
+    <div class="row" style="height:100%; border: #3b5998 solid 5px;">
+      <div class="col-sm-2" style="border: #3b5998 solid 5px; height: 100%;">
+        <% Subject.all.each do |td| %>
+        <%= link_to td.name, subject_path(td.id) %><br>
+        <% end %>
+      </div>
+
+      <div class="col-sm-7" style="border: #3b5998 solid 5px; height: 100%">
+       <%= yield %>
+      </div>     
+
+      <div class="col-sm-3" style="border: #3b5998 solid 5px; height: 100%">
+       
+      </div>
+    </div>
+  </div>
+
+  <!-- <footer>
      <%= render 'layouts/footer' %>
-  </footer>
+  </footer> -->
 </body>
 </html>

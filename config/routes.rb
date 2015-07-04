@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  # get 'users/index'
+  get 'tutor_details/search'
+
+  get 'tutor_details/search'
 
   resources :tutor_details
   resources :class_details
