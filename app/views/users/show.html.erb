@@ -35,4 +35,7 @@
   <%= @user.address %>
 </p>
 
-<%= link_to 'Edit', edit_user_registration_path if user_signed_in? && current_user.id==@user.id%> 
+<%= link_to 'Edit', edit_user_registration_path if user_signed_in? && current_user.id==@user.id %>
+<% if can? :update, @user %>
+  <%= link_to "Edit", edit_user_registration_path  %>
+<% end %>

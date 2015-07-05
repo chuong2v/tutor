@@ -20,4 +20,14 @@ class User < ActiveRecord::Base
   # def login
   #   @login || self.username || self.email
   # end
+  def self.current
+    Thread.current[:user]
+  end
+
+  def self.current=(user)
+    Thread.current[:user] = user
+  end
+  def admin?
+    
+  end
 end

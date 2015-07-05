@@ -10,7 +10,7 @@ class TutorDetail < ActiveRecord::Base
     @tutor_details = TutorDetail.all
     @tutor_details = @tutor_details.where("id IN (SELECT td_id FROM tutor_subjects WHERE subject_id=#{subject_id})") if subject_id.present?
     @tutor_details = @tutor_details.where("id IN (SELECT td_id FROM tutor_levels WHERE level_id=#{level_id})") if level_id.present?
-    @tutor_details = @tutor_details.where("title LIKE '%#{q}%' OR description LIKE '%#{q}%' OR address LIKE '%#{q}%'") if q.present?
+    @tutor_details = @tutor_details.where("title LIKE '%#{q}%' OR description LIKE '%#{q}%' OR address LIKE '%#{q}%' OR (user_id IN (SELECT id FROM users WHERE username LIKE '%#{q}%'))") if q.present?
     @tutor_details = @tutor_details.order(updated_at: :desc) if @class_details.present?
     @tutor_details = @tutor_details.paginate(:page => page, :per_page  => 10) 
   end
