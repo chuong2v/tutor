@@ -1,8 +1,7 @@
-<p id="notice"><%= notice %></p>
-
 <h3>
   <strong><%= @class_detail.title %></strong>
 </h3>
+<p id="notice"><%= notice %></p>
 
 <p>
   <i>Updated at 
@@ -34,7 +33,7 @@
   </p>
 <%end%>
 
-<% if @class_detail.gender_id.present?%>
+<% if @class_detail.salary.present?%>
 <p>
   <strong>Salary:</strong>
   <%= @class_detail.salary %>
@@ -55,7 +54,10 @@
   <%= @class_detail.description %>
 </p>
 <% end %>
+<%= social_share_button_tag(@class_detail.title, :popup => "true", url: request.original_url)%>
 <% if user_signed_in? && current_user.id == @class_detail.user_id %>
 <%= link_to 'Edit', edit_class_detail_path(@class_detail) %>|
-<% end %>
+<%= link_to 'Destroy', class_detail_path, method: :delete, data: { confirm: 'Are you sure?'} %>
+<% end %><br>
+
 <%=link_to 'Back', class_details_path %>

@@ -10,6 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *= require bootstrap/dist/css/bootstrap.css
+ *= require social-share-button
  *= require_tree .
  *= require_self
  
@@ -22,13 +23,13 @@ li {
 .menu{ 
  	margin-top: 0%;  
  	background: #004400;  
-   	min-height:100%;  
+   	min-height: 100%;  
 } 
 
 html {
 	margin: 0px auto;
 	padding: 0px;
-	height: 1000px;
+	/*height: 1000px;*/
 }
 
 body {
@@ -39,12 +40,34 @@ body {
 
 header {	
 	padding-top: 1px;
-	height: 10%;
+	height: 104px;
 	background: #3b5998; 	
 	border-bottom: solid gray 2px;
-	text-align: center;
+	text-align: center;	
+	/*position: fixed;*/
+	/*width: 100%;*/
+	/*z-index:1;*/
 }
 
+footer {
+	border-top: solid gray 2px;
+	border-bottom: solid gray 3px;
+	background: #3b5998;
+	color: white;
+	padding: 20px;
+	/*z-index: 1;*/
+}
+.footer p a{
+	color: black;	
+}
+.footer p a:hover {
+	color: white;	
+}
+.header {
+	/*position: fixed;*/
+	width: 100%;
+	background: #3b5998; 
+}
 .header h1 {color: #fff;}
 .header h1 a {
 	text-decoration: none; 
@@ -63,12 +86,66 @@ header {
 
 .container-fluid {
 	height:100%;	
+	width: 100%;	
+	border-top: 5px solid #3b5998;	
+	overflow: auto;
+	/*overflow: scroll;*/
+}
+
+.row {
+	/*height: 100%;*/
+	/*min-height: 1000px;*/
+	border: #3b5998 solid 5px;
+	border-top: none;
+
 }
 
 .col-sm-12 {
 	padding: 5px;
 	border: gray 2px solid;
+	/*background-color: #3B5998;*/
 }
+
+.col-sm-2 {
+	/*border-top: #3b5998 5px solid;*/
+	/*border-bottom: #3b5998 5px solid;*/
+	padding-top: 10px;
+	/*height: 100%; */
+	/*min-height: 1000px;*/
+	height: 412px;
+	background: #E9EAED;  
+	/*margin-top: 5px;*/
+	position: fixed;
+	/*overflow: scroll;*/
+}
+
+.col-sm-3 {
+	padding-top: 10px;
+	/*border-top: #3b5998 5px solid;*/
+	height: 100%;
+	float: right;
+}
+
+.col-sm-7 {
+	/*border-top: #3b5998 5px solid;*/
+	border-left: #3b5998 solid 5px;
+	border-right: #3b5998 solid 5px;
+	/*height: 1000px;*/
+	min-height: 516px;
+	/*overflow: scroll;*/
+	float: right;
+}
+
+
+.subject {
+	border-bottom: 2px solid gray;
+	padding: 2px 0px;
+}
+
+.subject a {
+	font-size: 14px;
+}
+
 .search_button {
 	background-color: #3b5998;
 	color: white;

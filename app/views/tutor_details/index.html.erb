@@ -1,31 +1,19 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Tutor Details</h1>
+<h1> Tutors </h1>
 
-<table border="1px solid black" style="width:100%">
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Subject</th>
-      <th>Level</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @tutor_details.each do |tutor_detail| %>
-      <tr>
-        <td><%= link_to User.find(tutor_detail.user_id).username, user_path(tutor_detail.user_id) %></td>
-        <td><%= Subject.find(tutor_detail.subject_id).name %></td>
-        <td><%= Level.find(tutor_detail.level_id).name %></td>
-        <td><%= link_to 'Show', tutor_detail %></td>
-        <td><%= link_to 'Edit', edit_tutor_detail_path(tutor_detail) %></td>
-        <td><%= link_to 'Destroy', tutor_detail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<%unless current_user.nil? %>
+  <%= link_to 'NEW TUTOR', new_class_detail_path %>
+  <%end%>
+    <div id="articles">
+    <% for article in @tutor_details %>
+      <div class="article" style="padding: 10px; border-bottom: gray solid 2px;">
+        <h4><%= link_to h(article.title), article %></h4>
+        <p><i>Updated at <%= article.updated_at %></i></p>
+        <div class="author" style="color: red">from <%=link_to User.find_by(id: article.user_id).username, user_path(article.user_id) %> </div>        
+        <div class="address">Address: <%= article.address %></div>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
 
-<br>
-
-<%= link_to 'New Tutor detail', new_tutor_detail_path %>
+<%= will_paginate @tutor_details %>

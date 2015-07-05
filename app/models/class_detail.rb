@@ -12,7 +12,7 @@ class ClassDetail < ActiveRecord::Base
     @class_details = @class_details.where("id IN (SELECT cd_id FROM class_subjects WHERE subject_id=#{subject_id})") if subject_id.present?
     @class_details = @class_details.where(level_id: level_id) if level_id.present?
     @class_details = @class_details.where("title LIKE '%#{q}%' OR description LIKE '%#{q}%' OR address LIKE '%#{q}%'") if q.present?
-    @class_details = @class_details.order(updated_at: :desc)
-    @class_details = @class_details.paginate(:page => page, :per_page  => 5)
+    @class_details = @class_details.order(updated_at: :desc) if @class_details.present?
+    @class_details = @class_details.paginate(:page => page, :per_page  => 10)
   end
 end

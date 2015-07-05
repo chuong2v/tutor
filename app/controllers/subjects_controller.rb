@@ -14,7 +14,8 @@ class SubjectsController < ApplicationController
 
   def search
     @class_details = ClassDetail.where("id IN (SELECT cd_id FROM class_subjects WHERE subject_id=#{params[:subject_id]})")
-    @class_details = @class_details.paginate(:page => params[:page], :per_page  => 5)
+    @class_details = @class_details.order(updated_at: :desc) if @class_details.present?
+    @class_details = @class_details.paginate(:page => params[:page], :per_page  => 10)
   end
 
   # GET /subjects/new

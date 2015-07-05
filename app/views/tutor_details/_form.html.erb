@@ -11,13 +11,46 @@
     </div>
   <% end %>
 
-  <div class="field">
+   <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+    
+  <div class="list-inline" >
     <%= f.label :subject_id %><br>
-    <%= f.select :subject_id, (Subject.all.collect {|subject| [subject.name, subject.id]}) %>    
+    <% Subject.all.collect do |subject|%>
+      <li>
+        <%= check_box_tag "subject_ids[]", subject.id %>
+        <%= subject.name %>
+      </li>
+    <% end %>
+  </div>
+  
+  <div class="list-inline">
+    <%= f.label :level_id %><br>
+    <% Level.all.collect do |level|%>
+      <li>
+        <%= check_box_tag "level_ids[]", level.id %>
+        <%= level.name %>
+      </li>
+    <% end %>
   </div>
   <div class="field">
-    <%= f.label :level_id %><br>
-    <%= f.select :level_id, (Level.all.collect {|level| [ level.name, level.id ] }) %>
+    <%= f.label :address %><br>
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :job %><br>
+    <%= f.text_field :job %>
+  </div>
+  <div class="field">
+    <%= f.label :gender %><br>
+    <%= f.select :gender_id, options_for_select(Gender.all.collect{|l| [l.name, l.id]}), include_blank: "None" %>
+  </div> 
+  
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
   </div>
   <div class="actions">
     <%= f.submit %>
