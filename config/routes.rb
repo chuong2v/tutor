@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
   get 'tutor_details/search'
 
-  get 'tutor_details/search'
+ 
 
   resources :tutor_details
   resources :class_details
   resources :levels
   resources :tutor_classes
-  resources :subjects
+  resources :subjects do
+    get 'search'
+  end
   devise_for :users, controllers: {
     # sessions: 'users/sessions'
     registrations: 'users/registrations',
@@ -19,7 +21,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'levels#index'
+  root 'class_details#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

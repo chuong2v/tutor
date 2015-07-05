@@ -1,0 +1,61 @@
+<p id="notice"><%= notice %></p>
+
+<h3>
+  <strong><%= @class_detail.title %></strong>
+</h3>
+
+<p>
+  <i>Updated at 
+    <%= @class_detail.updated_at %>
+  </i>
+</p>
+
+<p>
+  <strong>From:</strong>
+  <%= link_to User.find(@class_detail.user_id).username, user_path(@class_detail.user_id) %>
+</p>
+
+<p>
+  <strong>Subject:</strong>
+  <% @subject_ids.each do |s| %>
+  <%= Subject.find(s.subject_id).name %>;
+  <% end %>
+</p>
+
+<p>
+  <strong>Level:</strong>
+  <%= Level.find(@class_detail.level_id).name %>
+</p>
+
+<% if @class_detail.gender_id.present?%>
+  <p>
+    <strong>Gender:</strong>
+    <%= Gender.find(@class_detail.gender_id).name if @class_detail.gender_id.present?%>
+  </p>
+<%end%>
+
+<% if @class_detail.gender_id.present?%>
+<p>
+  <strong>Salary:</strong>
+  <%= @class_detail.salary %>
+  <%= "VND" %>
+</p>
+<% end %>
+
+<% if @class_detail.gender_id.present?%>
+<p>
+  <strong>Address:</strong>
+  <%= @class_detail.address %>
+</p>
+<% end %>
+
+<% if @class_detail.description.present?%>
+<p>
+  <strong>Description:</strong>
+  <%= @class_detail.description %>
+</p>
+<% end %>
+<% if user_signed_in? && current_user.id == @class_detail.user_id %>
+<%= link_to 'Edit', edit_class_detail_path(@class_detail) %>|
+<% end %>
+<%=link_to 'Back', class_details_path %>

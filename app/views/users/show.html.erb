@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @user.username %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= mail_to @user.email %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @user.phone %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @user.age %>
+</p>
+
+<p>
+  <strong>Job:</strong>
+  <%= @user.job %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= Gender.find(@user.gender_id).name%>
+</p>
+
+<strong>Address:</strong>
+  <%= @user.address %>
+</p>
+
+<%= link_to 'Edit', edit_user_registration_path if user_signed_in? && current_user.id==@user.id%> 

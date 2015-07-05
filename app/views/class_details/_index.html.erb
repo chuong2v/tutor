@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+<h1>Listing Class Details</h1>
+
+<table border="1px solid black" style="width:100%">
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Subject</th>
+      <th>Level</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @class_details.each do |class_detail| %>
+      <tr>
+        <td><%= link_to User.find(class_detail.user_id).username, user_path(class_detail.user_id) %></td>
+        <td><% @subject_ids = ClassSubject.where(cd_id: class_detail.id)%>
+            <% @subject_ids.each do |s| %>
+            <%= Subject.find(s.subject_id).name %>;
+            <% end %></td>
+        <td><%= Level.find(class_detail.level_id).name %></td>
+        <td><%= link_to 'Show', class_detail %></td>
+        <td><%= link_to 'Edit', edit_class_detail_path(class_detail) %></td>
+        <td><%= link_to 'Destroy', class_detail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Class detail', new_class_detail_path %>
