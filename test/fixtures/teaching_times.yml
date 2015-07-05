@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  td_id: 1
+  dow_id: 1
+  tod_id: 1
+
+two:
+  td_id: 1
+  dow_id: 1
+  tod_id: 1

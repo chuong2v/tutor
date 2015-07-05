@@ -1,0 +1,24 @@
+
+[1mFrom:[0m /home/chuongvv/ruby/tutor/app/controllers/tutor_details_controller.rb @ line 37 TutorDetailsController#search:
+
+    [1;34m19[0m: [32mdef[0m [1;34msearch[0m
+    [1;34m20[0m:   @subject_id = params[[33m:subject_id[0m]
+    [1;34m21[0m:   @level_id = params[[33m:level_id[0m]
+    [1;34m22[0m:   @q =params[[33m:q[0m]
+    [1;34m23[0m:   @kind = params[[33m:kind[0m]
+    [1;34m24[0m:   [1;34m# binding.pry[0m
+    [1;34m25[0m: 
+    [1;34m26[0m:   [32mif[0m @kind.eql?([31m[1;31m"[0m[31mTutor[1;31m"[0m[31m[0m)
+    [1;34m27[0m:     @tutor_details = [1;34;4mTutorDetail[0m.all
+    [1;34m28[0m:     [1;34m# @tutor_details = @tutor_details.where("id IN SELECT ") [0m
+    [1;34m29[0m:     @tutor_details = @tutor_details.where([35mlevel_id[0m: @level_id) [32mif[0m @level_id.present?
+    [1;34m30[0m:     @tutor_details = @tutor_details.where([31m[1;31m"[0m[31mtitle LIKE '%#{params[:q]}[0m[31m%' OR description LIKE '%#{params[:q]}[0m[31m%' OR address LIKE '%#{params[:q]}[0m[31m%'[1;31m"[0m[31m[0m) [32mif[0m @q.present?
+    [1;34m31[0m:   [32melse[0m
+    [1;34m32[0m:     @class_details = [1;34;4mClassDetail[0m.all
+    [1;34m33[0m:     @class_details = @class_details.where([31m[1;31m"[0m[31mid IN SELECT cd_id FROM class_subjects[1;31m"[0m[31m[0m) [32mif[0m @subject_id.present?
+    [1;34m34[0m:     @class_details = @class_details.where([35mlevel_id[0m: @level_id) [32mif[0m @level_id.present?
+    [1;34m35[0m:     @class_details = @class_details.where([31m[1;31m"[0m[31mtitle LIKE '%#{params[:q]}[0m[31m%' OR description LIKE '%#{params[:q]}[0m[31m%' OR address LIKE '%#{params[:q]}[0m[31m%'[1;31m"[0m[31m[0m) [32mif[0m @q.present?
+    [1;34m36[0m:   [32mend[0m
+ => [1;34m37[0m:   binding.pry
+    [1;34m38[0m: [32mend[0m
+

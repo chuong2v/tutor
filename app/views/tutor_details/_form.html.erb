@@ -1,0 +1,25 @@
+<%= form_for(@tutor_detail) do |f| %>
+  <% if @tutor_detail.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tutor_detail.errors.count, "error") %> prohibited this tutor_detail from being saved:</h2>
+
+      <ul>
+      <% @tutor_detail.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :subject_id %><br>
+    <%= f.select :subject_id, (Subject.all.collect {|subject| [subject.name, subject.id]}) %>    
+  </div>
+  <div class="field">
+    <%= f.label :level_id %><br>
+    <%= f.select :level_id, (Level.all.collect {|level| [ level.name, level.id ] }) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

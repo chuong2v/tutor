@@ -28,8 +28,8 @@
 
     <div class="row" style="height:100%; border: #3b5998 solid 5px;">
       <div class="col-sm-2" style="border: #3b5998 solid 5px; height: 100%;">
-        <% Subject.all.each do |td| %>
-        <%= link_to td.name, subject_path(td.id) %><br>
+        <% Subject.all.each do |subject| %>
+        <%= link_to subject.name, subject_search_path(subject.id) %><br>
         <% end %>
       </div>
 

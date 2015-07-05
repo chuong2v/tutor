@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @user.username %>
+</p>
+
+<p>
+  <strong>Subject:</strong>
+  <%= @subject.name %>
+</p>
+
+<p>
+  <strong>Level:</strong>
+  <%= @level.name %>
+</p>
+
+<%= link_to 'Edit', edit_tutor_detail_path(@tutor_detail) %> |
+<%= link_to 'Back', tutor_details_path %>
