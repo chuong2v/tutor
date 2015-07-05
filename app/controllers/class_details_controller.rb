@@ -1,12 +1,13 @@
 class ClassDetailsController < ApplicationController
   before_action :set_class_detail, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :edit, :update]
   before_action :check_title, only: [:update, :create]
+  before_action :check_possitive, only: [:edit, :update, :destroy]
   # GET /class_details
   # GET /class_details.json
   def index
     @class_details = ClassDetail.all.order(updated_at: :desc)    
-    @class_details = @class_details.paginate(:page => params[:page], :per_page  => 5)
+    @class_details = @class_details.paginate(:page => params[:page], :per_page  => 10)
   end
 
   # GET /class_details/1
@@ -28,10 +29,10 @@ class ClassDetailsController < ApplicationController
   # POST /class_details
   # POST /class_details.json
   def create
-    binding.pry
+    # binding.pry
     @class_detail = ClassDetail.new(class_detail_params)
     @class_detail.user_id = current_user.id       
-  
+  # k.user_id = current_user.id  
     respond_to do |format|
       if @class_detail.save
         format.html { redirect_to @class_detail, notice: 'Class detail was successfully created.'}
@@ -44,8 +45,8 @@ class ClassDetailsController < ApplicationController
     @subject_ids = params[:subject_ids]
     @subject_ids.collect {|id| ClassSubject.create(subject_id: id, cd_id: @class_detail.id)}
 
-    # @dow_ids = params[:dow_ids]
-    # @tod_ids = params[:tod_ids]
+    @dow_ids = params[:dow_ids]
+    @tod_ids = params[:tod_ids]
     # @dow_ids.each do |dow_id| 
     #   @temp = ClassTime.new(tc_id: @class_detail.id, dow_id: dow_id)
     #   @temp.tod_id = @tod_ids[@temp.dow_id]
@@ -93,5 +94,11 @@ class ClassDetailsController < ApplicationController
 
     def check_title
       redirect_to :back, notice: 'Title is not allowed to be blank.' if class_detail_params[:title].blank?
+    end
+
+    def check_possitive
+      unless current_user.id == ClassDetail.find(params[:id]).user_id
+        redirect_to class_detail_path
+      end 
     end
 end

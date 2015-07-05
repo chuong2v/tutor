@@ -12,8 +12,12 @@
       <h4><%= link_to h(article.title), article %></h4>
       <p><i>Updated at <%= article.updated_at %></i></p>
       <div class="author" style="color: red">from <%=link_to User.find_by(id: article.user_id).username, user_path(article.user_id) %> </div>
-      <div class="salary">Salary: <%= article.salary %><%= " VND"%> </div>
-      <div class="address">Address: <%= article.address %></div>
+      <% if article.salary.present? %>
+      	<div class="salary">Salary: <%= article.salary %><%= " VND"%> </div>
+      <% end %>
+      <% if article.salary.present? %>
+      	<div class="address">Address: <%= article.address %></div>
+      <% end %>
     </div>
   <% end %>
 </div>

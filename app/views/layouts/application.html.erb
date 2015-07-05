@@ -9,10 +9,10 @@
 <body onload="resizediv()">
   <header id="header">
     <%= render 'layouts/header' %>
-  </header>
+  </header> 
 
-  <div class="container-fluid">           
-    <div class="row" style="border: #3b5998 solid 5px;">
+  <div class="container-fluid">  
+    <div class="row">
       <div class="col-sm-12">
         <%= form_tag(tutor_details_search_path, method: "get") do %>   
           <%= label_tag :subject_id %>
@@ -25,26 +25,46 @@
         <% end %>
       </div>
     </div>
-
-    <div class="row" style="height:100%; border: #3b5998 solid 5px;">
-      <div class="col-sm-2" style="border: #3b5998 solid 5px; height: 100%;">
+    <div class="row">
+      <div class="col-sm-2">
         <% Subject.all.each do |subject| %>
-        <%= link_to subject.name, subject_search_path(subject.id) %><br>
+          <div class="subject">
+            <%= link_to subject.name, subject_search_path(subject.id) %><br>
+          </div>
+        <% end %>
+      </div>          
+
+      <div class="col-sm-3">
+        <h3>Lastest post</h3>
+        <% @article = ClassDetail.last.updated_at >= TutorDetail.last.updated_at ? ClassDetail.last : TutorDetail.last %>
+        <div id="articles">
+          <div class="article" style="padding: 10px; border-bottom: gray solid 2px;">
+            <h4><%= link_to h(@article.title), @article %></h4>
+            <p><i>Updated at <%= @article.updated_at %></i></p>
+            <div class="author" style="color: red">from <%=link_to User.find_by(id: @article.user_id).username, user_path(@article.user_id) %> </div>
+            <% if @article.address.present? %>
+              <div class="address">Address: <%= @article.address %></div>
+            <% end %>
+          </div>
+        </div>
+
+        <h3>Newest users</h3>
+        <% User.last(5).each do |user| %>
+        <p>
+          <%= link_to user.username, user_path(user.id) %>
+          <i> - signed up at <%= user.created_at %></i>
+        </p>
         <% end %>
       </div>
 
-      <div class="col-sm-7" style="border: #3b5998 solid 5px; height: 100%">
+      <div class="col-sm-7">
        <%= yield %>
-      </div>     
-
-      <div class="col-sm-3" style="border: #3b5998 solid 5px; height: 100%">
-       
-      </div>
+      </div> 
     </div>
   </div>
 
-  <!-- <footer>
+  <footer>
      <%= render 'layouts/footer' %>
-  </footer> -->
+  </footer> 
 </body>
 </html>

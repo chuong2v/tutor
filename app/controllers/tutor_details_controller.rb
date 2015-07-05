@@ -1,18 +1,21 @@
 class TutorDetailsController < ApplicationController
   before_action :set_tutor_detail, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only:[:edit, :update, :destroy]
+  before_action :authenticate_user!, only:[:new, :edit, :update, :destroy]
+  before_action :check_title, only: [:update, :create]
+  before_action :check_possitive, only: [:edit, :update, :destroy]
   # GET /tutor_details
   # GET /tutor_details.json
   def index
-    @tutor_details = TutorDetail.all    
+    @tutor_details = TutorDetail.all.order(updated_at: :desc)    
+    @tutor_details = @tutor_details.paginate(:page => params[:page], :per_page  => 10)  
   end
 
   # GET /tutor_details/1
   # GET /tutor_details/1.json
-  def show
-    @user = User.find(@tutor_detail.user_id)
-    @level = Level.find(@tutor_detail.level_id)
-    @subject = Subject.find(@tutor_detail.subject_id)
+  def show    
+    @subject_ids = TutorSubject.where(td_id: @tutor_detail.id).select("subject_id") 
+    @level_ids = TutorLevel.where(td_id: @tutor_detail.id).select("level_id") 
+    # binding.pry
   end
 
   def search 
@@ -57,6 +60,11 @@ class TutorDetailsController < ApplicationController
         format.json { render json: @tutor_detail.errors, status: :unprocessable_entity }
       end
     end
+    @subject_ids = params[:subject_ids]
+    @subject_ids.collect {|id| TutorSubject.create(subject_id: id, td_id: @tutor_detail.id)}
+
+    @level_ids = params[:level_ids]
+    @level_ids.collect {|id| TutorLevel.create(level_id: id, td_id: @tutor_detail.id)}
   end
 
   # PATCH/PUT /tutor_details/1
@@ -92,6 +100,16 @@ class TutorDetailsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def tutor_detail_params
       # binding.pry
-      params.require(:tutor_detail).permit(:subject_id, :level_id)
+      params.require(:tutor_detail).permit(:title, :address, :job, :gender_id, :description)
+    end
+
+    def check_title
+      redirect_to :back, notice: 'Title is not allowed to be blank.' if tutor_detail_params[:title].blank?
+    end
+
+    def check_possitive
+      unless current_user.id == TutorDetail.find(params[:id]).user_id
+        redirect_to tutor_detail_path
+      end 
     end
 end

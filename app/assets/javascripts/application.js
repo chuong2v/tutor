@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap/dist/js/bootstrap.js
+//= require social-share-button
 //= require_tree .
