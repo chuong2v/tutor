@@ -139,7 +139,7 @@ footer {
 
 .subject {
 	border-bottom: 2px solid gray;
-	padding: 2px 0px;
+	line-height: 1.5;
 }
 
 .subject a {

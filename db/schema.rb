@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150705093939) do
+ActiveRecord::Schema.define(version: 20150706074005) do
 
   create_table "class_details", force: :cascade do |t|
     t.integer  "user_id",     limit: 4
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20150705093939) do
   end
 
   create_table "class_times", force: :cascade do |t|
-    t.integer  "tc_id",      limit: 4
+    t.integer  "cd_id",      limit: 4
     t.integer  "dow_id",     limit: 4
     t.integer  "tod_id",     limit: 4
     t.datetime "created_at",           null: false

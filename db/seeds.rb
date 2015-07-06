@@ -1,25 +1,28 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-levels = [
-  "Mau giao",
-  "Lop 1",
-  "Lop 2",
-  "Lop 3",
-  "Lop 4",
-  "Lop 5",
-  "Lop 6",
-  "Lop 7",
-  "Lop 8",
-  "Lop 9",
-  "Lop 10",
-  "Lop 11",
-  "Lop 12",
-  "Luyen thi dai hoc",
-  "Dai hoc"]
-
-levels.each { |level| Level.create(level)}
+seed_file = File.join(Rails.root, 'db', 'seeds.yml')
+config = YAML::load_file(seed_file)
+Role.create(config["role_list"])
+User.create(config["user_list"])
+Category.create!(config["category_list"])
+params_post = config["post_list"]
+# params_post["user_id"] = User.all.sample
+params_post.each do |pp|
+      pp["user_id"] = User.all.sample.id
+  end
+Post.create(params_post)
+posts = Post.all
+categories_posts_list = [
+  [Post.all.sample.id, Category.all.sample.id],
+  [Post.all.sample.id, Category.all.sample.id]
+]
+categories_posts_list.each do |postid, cateid|
+  CategoriesPost.create(
+            post_id: postid,
+            category_id: cateid
+    )
+end
+params_command = config["command_list"]
+params_command.each do |pm|
+  pm["user_id"] = User.all.sample.id
+  pm["post_id"] = Post.all.sample.id
+end
+Command.create(params_command)
