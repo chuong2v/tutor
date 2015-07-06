@@ -26,6 +26,16 @@
   <%= Level.find(@class_detail.level_id).name %>
 </p>
 
+<% if @class_times.present? %>
+  <p>
+    <strong>Time:</strong>
+    <% @class_times.each do |class_time| %>
+    <%= TimeOfDay.find(class_time.tod_id).name %>
+    <%= DayOfWeek.find(class_time.dow_id).name %>;
+    <% end %>
+  </p>
+<% end %>
+
 <% if @class_detail.gender_id.present?%>
   <p>
     <strong>Gender:</strong>

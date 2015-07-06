@@ -14,6 +14,7 @@ class ClassDetailsController < ApplicationController
   # GET /class_details/1.json
   def show
     @subject_ids = ClassSubject.where(cd_id: @class_detail.id).select("subject_id") 
+    @class_times = ClassTime.where(cd_id: @class_detail.id)
     # binding.pry
   end
 
@@ -47,11 +48,10 @@ class ClassDetailsController < ApplicationController
 
     @dow_ids = params[:dow_ids]
     @tod_ids = params[:tod_ids]
-    # @dow_ids.each do |dow_id| 
-    #   @temp = ClassTime.new(tc_id: @class_detail.id, dow_id: dow_id)
-    #   @temp.tod_id = @tod_ids[@temp.dow_id]
-    #   @temp.save
-    # end
+    # binding.pry
+    @dow_ids.each do |dow_id| 
+      ClassTime.create(cd_id: @class_detail.id, dow_id: dow_id, tod_id: @tod_ids[dow_id.to_i - 1])
+    end
   end
 
   # PATCH/PUT /class_details/1
