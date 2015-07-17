@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  get 'test/index'
+
   get 'tutor_details/search'
 
- 
+  post '/search', to: 'test#search'
 
   resources :tutor_details
   resources :class_details
@@ -22,7 +24,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'class_details#index'
-
+  # root 'test#index'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

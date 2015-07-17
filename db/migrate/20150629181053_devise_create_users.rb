@@ -10,6 +10,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :address,            null: false, default: ""
       t.string :job,                null: false, default: ""
       t.integer :gender_id,         null: false, default: 1
+      t.integer :role_id,           null: false, default: 2
 
       ## Recoverable
       t.string   :reset_password_token
