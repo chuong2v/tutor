@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Tutors</title>
+  <title><%= render_title %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -14,11 +14,11 @@
   <div class="container-fluid">  
     <div class="row">
       <div class="col-sm-12">
-        <%= form_tag(tutor_details_search_path, method: "get") do %>   
+        <%= form_tag(tutor_details_search_path, method: "get") do %>  
           <%= label_tag :subject_id %>
           <%= select_tag :subject_id, options_for_select(Subject.all.collect {|subject| [subject.name, subject.id]}), include_blank: "All"%>
           <%= label_tag :level_id %>
-          <%= select_tag :level_id,  options_for_select(Level.all.collect {|level| [level.name, level.id]}), include_blank: "All" %>
+          <%= select_tag :level_id,  options_for_select(Level.all.collect {|level| [level.name, level.id]}), include_blank: "All" %>     
           <%= text_field_tag(:q) %>
           <%= select_tag :kind, options_for_select(["Class", "Tutor"])%>
           <%= submit_tag "Search", class: "search_button"  %> 
@@ -36,7 +36,13 @@
 
       <div class="col-sm-3">
         <h3>Lastest post</h3>
-        <% @article = ClassDetail.last.updated_at >= TutorDetail.last.updated_at ? ClassDetail.last : TutorDetail.last %>
+        <% if ClassDetail.last.present? && TutorDetail.last.present? %>
+        <% @article = ClassDetail.last.updated_at >= TutorDetail.last.updated_at ? ClassDetail.last : TutorDetail.last %> 
+        <% elsif ClassDetail.last.present? then @article = ClassDetail.last %>
+        <% elsif TutorDetail.last.present? then @article = TutorDetail.last %>
+        <% end %>
+
+        <% if @article.present? %>
         <div id="articles">
           <div class="article" style="padding: 10px; border-bottom: gray solid 2px;">
             <h4><%= link_to h(@article.title), @article %></h4>
@@ -47,6 +53,7 @@
             <% end %>
           </div>
         </div>
+        <% end %>
 
         <h3>Newest users</h3>
         <% User.last(5).each do |user| %>

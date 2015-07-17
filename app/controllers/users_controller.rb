@@ -4,8 +4,9 @@ class UsersController < ApplicationController
   end
   # before_action :authenticate_user!
 
-  def show
+  def show    
     @user = User.find(params[:id])
+    @title = "Information: " + @user.username + " - Tutors"
   end
 
   def edit

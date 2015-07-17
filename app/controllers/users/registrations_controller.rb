@@ -15,6 +15,7 @@ before_filter :configure_permitted_parameters, if: :devise_controller?
   # GET /resource/edit
   def edit
     super
+    @title = "Edit: " + @user.username + " - Tutors"
   end
 
   # PUT /resource

@@ -118,6 +118,7 @@ ActiveRecord::Schema.define(version: 20150706074005) do
     t.string   "address",                limit: 255, default: "", null: false
     t.string   "job",                    limit: 255, default: "", null: false
     t.integer  "gender_id",              limit: 4,   default: 1,  null: false
+    t.integer  "role_id",                limit: 4,   default: 2,  null: false
     t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -128,7 +129,6 @@ ActiveRecord::Schema.define(version: 20150706074005) do
     t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
-    t.integer  "role_id",                limit: 4
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

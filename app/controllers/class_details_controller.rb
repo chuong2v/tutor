@@ -13,6 +13,7 @@ class ClassDetailsController < ApplicationController
   # GET /class_details/1
   # GET /class_details/1.json
   def show
+    @title = ClassDetail.find(@class_detail.id).title + " - Tutors"
     @subject_ids = ClassSubject.where(cd_id: @class_detail.id).select("subject_id") 
     @class_times = ClassTime.where(cd_id: @class_detail.id)
     # binding.pry
