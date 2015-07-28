@@ -7,6 +7,8 @@ class ClassDetailsController < ApplicationController
   # GET /class_details.json
   def index
     @class_details = ClassDetail.all.order(updated_at: :desc)    
+    # @q = ClassDetail.ransack(params[:q])   
+    # @class_details = @q.result 
     @class_details = @class_details.paginate(:page => params[:page], :per_page  => 10)
   end
 

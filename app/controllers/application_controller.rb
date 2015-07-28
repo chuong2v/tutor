@@ -13,14 +13,19 @@ class ApplicationController < ActionController::Base
     @genders = Gender.all 
     devise_parameter_sanitizer.for(:sign_up) << :username
     devise_parameter_sanitizer.for(:account_update) << :username
+
     devise_parameter_sanitizer.for(:sign_up) << :phone
     devise_parameter_sanitizer.for(:account_update) << :phone
+
     devise_parameter_sanitizer.for(:sign_up) << :address
     devise_parameter_sanitizer.for(:account_update) << :address
+
     devise_parameter_sanitizer.for(:sign_up) << :age
     devise_parameter_sanitizer.for(:account_update) << :age
+
     devise_parameter_sanitizer.for(:sign_up) << :gender_id
     devise_parameter_sanitizer.for(:account_update) << :gender_id
+    
     devise_parameter_sanitizer.for(:sign_up) << :job
     devise_parameter_sanitizer.for(:account_update) << :job
 
