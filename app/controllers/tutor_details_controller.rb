@@ -30,6 +30,7 @@ class TutorDetailsController < ApplicationController
     else
       @class_details = ClassDetail.search(@subject_id, @level_id, @q, @page)
     end
+    
   end
 
   def search_by_subject

@@ -1,0 +1,350 @@
+role_list:
+- 
+  name: admin
+
+- 
+  name: user
+
+user_list:
+- 
+  username: admin
+  email: admin@gmail.com
+  password: 12345678
+  phone: 01234567890
+  address: Quảng Trị 
+  age: 22
+  job: Sinh viên 
+  gender_id: 1
+  role_id: 1
+
+- 
+  username: chuong
+  email: chuong@gmail.com
+  password: 12345678
+  phone: 01234567890
+  address: Quảng Trị 
+  age: 22
+  job: Sinh viên 
+  gender_id: 1
+  role_id: 2
+
+- 
+  username: phuc
+  email: phuc@gmail.com
+  password: 12345678
+  phone: 01234567890
+  address: Quảng Ngãi
+  age: 25
+  job: Giáo viên
+  gender_id: 2
+  role_id: 2
+
+- 
+  username: luong
+  email: luong@gmail.com
+  password: 12345678
+  phone: 01234567890
+  address: Liên Chiểu
+  age: 20
+  job: Sinh viên
+  gender_id: 1
+  role_id: 2
+
+- 
+  username: tien
+  email: tien@gmail.com
+  password: 12345678
+  phone: 01234567890
+  address: Hải Châu
+  age: 19
+  job: Sinh viên 
+  gender_id: 1
+  role_id: 2
+
+- 
+  username: son
+  email: son@gmail.com
+  password: 12345678
+  phone: 01234567890
+  address: Cẩm Lệ
+  age: 22
+  job: Sinh viên 
+  gender_id: 2
+  role_id: 2
+
+- 
+  username: chien
+  email: chien@gmail.com
+  password: 12345678
+  phone : 01234567890
+  address: Quảng Ngãi
+  age: 27
+  job: Giáo viên
+  gender_id: 1
+  role_id: 2
+
+- 
+  username: duydy
+  email: duydy@gmail.com
+  password: 12345678
+  phone: 01234567890
+  address: Liên Chiểu 
+  age: 20
+  job: Sinh viên
+  gender_id: 1
+  role_id: 2
+
+- 
+  username: messi
+  email: messi@gmail.com
+  password: 12345678
+  phone: 01234567890
+  address: Hòa Khánh 
+  age: 20
+  job: Sinh viên 
+  gender_id: 2
+  role_id: 2
+
+- 
+  username: ronaldo
+  email: ronaldo@gmail.com
+  password: 12345678
+  phone: 01234567890
+  address: Quảng Trị 
+  age: 20
+  job: Sinh viên
+  gender_id: 1
+  role_id: 2
+
+- 
+  username: congphuong
+  email: congphuong@gmail.com
+  password: 12345678
+  phone: 01234567890
+  address: Huế
+  age: 20
+  job: Sinh viên 
+  gender_id: 1
+  role_id: 2
+
+gender_list:
+- 
+  name: Nam 
+
+- 
+  name: Nữ
+
+level_list:
+-
+  name: Mẫu giáo
+- 
+  name: Lớp 1 
+- 
+  name: Lớp 2
+- 
+  name: Lớp 3
+- 
+  name: Lớp 4
+- 
+  name: Lớp 5
+- 
+  name: Lớp 6
+- 
+  name: Lớp 7
+- 
+  name: Lớp 8
+- 
+  name: Lớp 9
+- 
+  name: Lớp 10
+- 
+  name: Lớp 11
+- 
+  name: Lớp 12
+- 
+  name: Luyện thi đại học
+- 
+  name: Khác
+
+subject_list:
+- 
+  name: Toán           
+- 
+  name: Vật Lý
+- 
+  name: Hóa Học
+- 
+  name: Sinh Học
+- 
+  name: Địa Lý
+- 
+  name: Lịch Sử
+- 
+  name: Ngữ Văn
+- 
+  name: Tin Học
+- 
+  name: Tiếng Anh
+- 
+  name: Tiếng Pháp
+- 
+  name: Tiếng Nhật
+- 
+  name: Tiếng Hàn 
+- 
+  name: Tiếng Trung 
+- 
+  name: Âm nhạc Mỹ thuật
+- 
+  name: Mỹ thuật
+
+day_of_week_list:
+-
+  name: Chủ nhật
+-
+  name: Thứ hai
+-
+  name: Thứ ba
+-
+  name: Thứ tư 
+-
+  name: Thứ năm 
+-
+  name: Thứ sáu
+-
+  name: Thứ bảy
+
+time_of_day_list:
+-
+  name: Sáng
+-
+  name: Chiều
+-
+  name: Tối
+
+class_detail_list: 
+-
+  title: Tìm gia sư luyện thi khối C
+  description: Yêu cầu sinh viên năm 2 trở lên
+  user_id: 1
+  gender_id: 1
+  level_id: 14
+  salary: 800000
+  address: Hòa Khánh
+
+-
+  title: Tìm gia sư luyện thi khối D
+  description: Yêu cầu sinh viên Ngoại ngữ 
+  user_id: 2
+  gender_id: 2
+  level_id: 14
+  salary: 800000
+  address: Hòa Khánh
+
+-
+  title: Tìm gia sư 12
+  description: Yêu cầu giáo viên
+  user_id: 3
+  gender_id: 1
+  level_id: 14
+  salary: 1500000
+  address: Hòa Khánh
+
+-
+  title: Tìm gia sư nữ dạy bé lớp 1
+  description: Yêu cầu sinh viên năm 2 trở lên
+  user_id: 5
+  gender_id: 2
+  level_id: 2
+  salary: 800000
+  address: Quận Hải Châu
+
+-
+  title: Tìm gia sư luyện vẽ thi vào kiến trúc
+  description: Yêu cầu sinh viên kiến trúc
+  user_id: 6
+  gender_id: 1
+  level_id: 14
+  salary: 900000
+  address: Hòa Khánh
+
+-
+  title: Tìm gia sư tin học văn phòng
+  description: 
+  user_id: 6
+  gender_id: 1
+  level_id: 12
+  salary: 900000
+  address: Hòa Khánh
+
+-
+  title: Tìm gia sư tiếng Anh
+  description: Yêu cầu sinh viên Ngoại ngữ
+  user_id: 8
+  gender_id: 2
+  level_id: 14
+  salary: 900000
+  address: Hòa Khánh
+
+-
+  title: Tìm gia sư Toán lớp 9
+  description: Yêu cầu sinh viên năm 2 trở lên
+  user_id: 1
+  gender_id: 1
+  level_id: 10
+  salary: 800000
+  address: Liên Chiểu
+
+-
+  title: Tìm gia sư tiếng Anh lớp 6
+  description: Yêu cầu sinh viên Ngoại ngữ 
+  user_id: 2
+  gender_id: 2
+  level_id: 7
+  salary: 800000
+  address: Hòa Khánh
+
+-
+  title: Tìm gia sư lớp 10
+  description: Yêu cầu giáo viên
+  user_id: 3
+  gender_id: 1
+  level_id: 14
+  salary: 1500000
+  address: Hải Châu
+
+-
+  title: Tìm gia sư Hóa luyện thi đại học
+  description: Yêu cầu sinh viên năm 2 trở lên
+  user_id: 5
+  gender_id: 1
+  level_id: 14
+  salary: 800000
+  address: Quận Hải Châu
+
+-
+  title: Tìm gia sư lớp 10
+  description: Yêu cầu sinh viên Sư phạm
+  user_id: 6
+  gender_id: 1
+  level_id: 11
+  salary: 900000
+  address: Đường Âu Cơ
+
+-
+  title: Tìm gia sư luyện đàn piano
+  description: 
+  user_id: 6
+  gender_id: 
+  level_id: 12
+  salary: 900000
+  address: Đường Lạc Long Quân
+
+-
+  title: Tìm gia sư tiếng Anh
+  description: Yêu cầu sinh viên Ngoại ngữ
+  user_id: 8
+  gender_id: 2
+  level_id: 9
+  salary: 900000
+  address: Hòa Khánh

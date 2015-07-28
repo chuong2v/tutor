@@ -65,7 +65,7 @@
   <%= @class_detail.description %>
 </p>
 <% end %>
-<%= social_share_button_tag(@class_detail.title, :popup => "true", url: request.original_url)%>
+<%= social_share_button_tag(@class_detail.title + "\n", :popup => "true", url: request.original_url)%>
 <% if user_signed_in? && (current_user.id == @class_detail.user_id or current_user.role_id == 1) %>
 <%= link_to 'Edit', edit_class_detail_path(@class_detail) %>|
 <%= link_to 'Destroy', class_detail_path, method: :delete, data: { confirm: 'Are you sure?'} %>

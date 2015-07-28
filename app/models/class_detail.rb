@@ -9,7 +9,9 @@ class ClassDetail < ActiveRecord::Base
 
   def self.search(subject_id, level_id, q, page)
     @class_details = ClassDetail.all
-    @class_details = @class_details.where("id IN (SELECT cd_id FROM class_subjects WHERE subject_id=#{subject_id})") if subject_id.present?
+    # @class_details = @class_details.where("id IN (SELECT cd_id FROM class_subjects WHERE subject_id=#{subject_id})") if subject_id.present?
+    @class_details = @class_details.where(id: ClassSubject.where(subject_id: "#{subject_id}").select("cd_id")) if subject_id.present?
+    # @class_details = ClassDetail.joins(:class_subjects) if subject_id.present?
     @class_details = @class_details.where(level_id: level_id) if level_id.present?
     @class_details = @class_details.where("title LIKE '%#{q}%' OR description LIKE '%#{q}%' OR address LIKE '%#{q}%' OR (user_id IN (SELECT id FROM users WHERE username LIKE '%#{q}%'))") if q.present?
     @class_details = @class_details.order(updated_at: :desc) if @class_details.present?

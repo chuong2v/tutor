@@ -14,15 +14,17 @@
   <div class="container-fluid">  
     <div class="row">
       <div class="col-sm-12">
-        <%= form_tag(tutor_details_search_path, method: "get") do %>  
-          <%= label_tag :subject_id %>
-          <%= select_tag :subject_id, options_for_select(Subject.all.collect {|subject| [subject.name, subject.id]}), include_blank: "All"%>
-          <%= label_tag :level_id %>
-          <%= select_tag :level_id,  options_for_select(Level.all.collect {|level| [level.name, level.id]}), include_blank: "All" %>     
-          <%= text_field_tag(:q) %>
-          <%= select_tag :kind, options_for_select(["Class", "Tutor"])%>
-          <%= submit_tag "Search", class: "search_button"  %> 
-        <% end %>
+        <div ng-app="">
+          <%= form_tag(tutor_details_search_path, method: "get") do %>  
+            <%= label_tag :subject_id %>
+            <%= select_tag :subject_id, options_for_select(Subject.all.collect {|subject| [subject.name, subject.id]}), include_blank: "All"%>
+            <%= label_tag :level_id %>
+            <%= select_tag :level_id,  options_for_select(Level.all.collect {|level| [level.name, level.id]}), include_blank: "All" %>     
+            <%= text_field_tag(:q) %>
+            <%= select_tag :kind, options_for_select(["Class", "Tutor"])%>
+            <%= submit_tag "Search", class: "search_button"  %> 
+          <% end %>
+        </div>
       </div>
     </div>
     <div class="row">
@@ -75,3 +77,5 @@
   </footer> 
 </body>
 </html>
+
+

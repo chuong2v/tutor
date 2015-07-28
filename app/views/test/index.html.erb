@@ -1,0 +1,38 @@
+<h1>Test#index</h1>
+<p>Find me in app/views/test/index.html.erb</p>
+<%= form_tag("/search", action: "get") do %>
+  <%= label_tag(:q, "Search for:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search", id: "mySearch") %>
+<% end %>
+
+<%= check_box_tag(:pet_dog,"chuong", true) %>
+<%= label_tag(:pet_dog, "I own a dog") %><br>
+<%= check_box_tag(:pet_cat) %>
+<%= label_tag(:pet_cat, "I own a cat") %><br>
+
+<%= radio_button_tag(:age, "child") %>
+<%= label_tag(:age_child, "I am younger than 21") %><br>
+<%= radio_button_tag(:age, "adult") %>
+<%= label_tag(:age_adult, "I'm over 21") %><br>
+
+<%= text_field(:user, :username) %>
+
+<%=form_tag(search_path, method: "patch")%>
+<form>
+<%= select_date %><br>
+<%= color_field_tag 'color', '#DEF726' %> <br>
+<%= select_year(Time.now) %><br>
+<%= telephone_field("user", "phone") %> <br>
+<%= week_field("user", "username") %> <br>
+
+<input name="addresses[][line1]" type="text"/>
+<input name="addresses[][line2]" type="text"/>
+<input name="addresses[][city]" type="text"/>
+<input name="addresses[][line1]" type="text"/>
+<input name="addresses[][line2]" type="text"/>
+<input name="addresses[][city]" type="text"/>
+
+
+<input type="submit"/>
+</form>

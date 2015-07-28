@@ -15,6 +15,9 @@
  *= require_self
  
  */
+iframe {
+	min-height: 390px;
+}
 
 li {
 	list-style: none;
@@ -112,11 +115,13 @@ footer {
 	padding-top: 10px;
 	/*height: 100%; */
 	/*min-height: 1000px;*/
-	height: 412px;
+	height: 400px;
 	/*background: #E9EAED;  */
 	/*margin-top: 5px;*/
 	position: fixed;
 	/*overflow: scroll;*/
+	overflow-x: hidden;
+	overflow-y: auto;
 }
 
 .col-sm-3 {
@@ -131,7 +136,7 @@ footer {
 	border-left: #3b5998 solid 5px;
 	border-right: #3b5998 solid 5px;
 	/*height: 1000px;*/
-	min-height: 516px;
+	min-height: 700px;
 	/*overflow: scroll;*/
 	float: right;
 }
@@ -139,7 +144,7 @@ footer {
 
 .subject {
 	border-bottom: 2px solid gray;
-	line-height: 1.5;
+	line-height: 2.5;
 }
 
 .subject a {

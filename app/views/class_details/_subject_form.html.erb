@@ -1,0 +1,7 @@
+<%= label_tag :subject_id %><br>
+    <% Subject.all.collect do |subject|%>
+      <li>
+        <%= check_box_tag "subject_ids[]", subject.id %>
+        <%= subject.name %>
+      </li>
+    <% end %>
