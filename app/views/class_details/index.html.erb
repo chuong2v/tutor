@@ -11,7 +11,7 @@
     <div class="article" style="padding: 10px; border-bottom: gray solid 2px;">
       <h4><%= link_to h(article.title), article %></h4>
       <p><i>Updated at <%= article.updated_at %></i></p>
-      <div class="author" style="color: red">from <%=article.user_link%> </div>
+      <div class="author" style="color: red">from <%=link_to User.find(article.user_id).username, user_path(article.user_id)%> </div>
       <% if article.salary.present? %>
       	<div class="salary">Salary: <%= article.salary %><%= " VND"%> </div>
       <% end %>
