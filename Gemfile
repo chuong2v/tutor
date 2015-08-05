@@ -40,6 +40,8 @@ gem 'kaminari', '~> 0.16.1'
 gem "cancan"
 
 gem "social-share-button"
+
+gem "active_decorator"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
