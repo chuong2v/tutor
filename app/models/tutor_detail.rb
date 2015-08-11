@@ -1,6 +1,6 @@
 class TutorDetail < ActiveRecord::Base
-  belongs_to :subject
-  belongs_to :level
+  has_many :tutor_subjects
+  has_many :levels
   belongs_to :user
   has_many :teaching_times
   has_many :time_of_days, :through => :teaching_times

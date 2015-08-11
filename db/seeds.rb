@@ -8,6 +8,7 @@ Level.delete_all
 DayOfWeek.delete_all
 TimeOfDay.delete_all
 ClassDetail.delete_all
+AdminUser.delete_all
 
 Gender.create!(config["gender_list"])
 Subject.create!(config["subject_list"])
@@ -17,7 +18,8 @@ User.create!(config["user_list"])
 DayOfWeek.create!(config["day_of_week_list"])
 TimeOfDay.create!(config["time_of_day_list"])
 ClassDetail.create!(config["class_detail_list"])
-
+AdminUser.create!(email: 'admin@example.com', password: '12345678', 
+  password_confirmation: '12345678') 
 # Category.create!(config["category_list"])
 # params_post = config["post_list"]
 # # params_post["user_id"] = User.all.sample

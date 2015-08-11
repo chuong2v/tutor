@@ -42,6 +42,12 @@ gem "cancan"
 gem "social-share-button"
 
 gem "active_decorator"
+
+gem 'activeadmin', github: 'gregbell/active_admin'
+
+# Plus integrations with:
+gem 'draper'
+gem 'pundit'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
